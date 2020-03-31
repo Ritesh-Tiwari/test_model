@@ -1,0 +1,167 @@
+Error:
+Odoo Server Error
+
+Traceback (most recent call last):
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 1117, in _validate_fields
+    check(self)
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_ui_view.py", line 351, in _check_xml
+    self.postprocess_and_fields(view.model, view_doc, view.id)
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_ui_view.py", line 1098, in postprocess_and_fields
+    self.raise_view_error(_('Model not found: %(model)s') % dict(model=model), view_id)
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_ui_view.py", line 568, in raise_view_error
+    raise ValueError(message)
+ValueError: Model not found: student_details
+
+Error context:
+View ` student.details.form.view `
+[view_id: 1326, xml_id: n/a, model: student_details, parent_id: n/a]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\tools\convert.py", line 758, in parse
+    self._tags[rec.tag](rec, de, mode=mode)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\tools\convert.py", line 663, in _tag_record
+    record = model.with_context(rec_context)._load_records([data], self.mode == 'update')
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 3879, in _load_records
+    records = self._load_records_create([data['values'] for data in to_create])
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 3793, in _load_records_create
+    return self.create(values)
+  File "<decorator-gen-32>", line 2, in create
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\api.py", line 462, in _model_create_multi
+    return create(self, arg)
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_ui_view.py", line 428, in create
+    return super(View, self).create(vals_list)
+  File "<decorator-gen-3>", line 2, in create
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\api.py", line 462, in _model_create_multi
+    return create(self, arg)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 3610, in create
+    fields[0].determine_inverse(batch_recs)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\fields.py", line 1142, in determine_inverse
+    getattr(records, self.inverse)()
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_ui_view.py", line 275, in _inverse_arch
+    view.write(data)
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_ui_view.py", line 445, in write
+    res = super(View, self).write(self._compute_defaults(vals))
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 3335, in write
+    self._write(store_vals)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 3471, in _write
+    self._validate_fields(vals)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 1121, in _validate_fields
+    raise ValidationError("%s\n\n%s" % (_("Error while validating constraint"), tools.ustr(e)))
+odoo.exceptions.ValidationError: ('Error while validating constraint\n\nModel not found: student_details\n\nError context:\nView ` student.details.form.view `\n[view_id: 1326, xml_id: n/a, model: student_details, parent_id: n/a]', None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\http.py", line 656, in _handle_exception
+    return super(JsonRequest, self)._handle_exception(exception)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\http.py", line 314, in _handle_exception
+    raise pycompat.reraise(type(exception), exception, sys.exc_info()[2])
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\tools\pycompat.py", line 87, in reraise
+    raise value
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\http.py", line 698, in dispatch
+    result = self._call_function(**self.params)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\http.py", line 346, in _call_function
+    return checked_call(self.db, *args, **kwargs)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\service\model.py", line 97, in wrapper
+    return f(dbname, *args, **kwargs)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\http.py", line 339, in checked_call
+    result = self.endpoint(*a, **kw)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\http.py", line 941, in __call__
+    return self.method(*args, **kw)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\http.py", line 519, in response_wrap
+    response = f(*args, **kw)
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\web\controllers\main.py", line 966, in call_button
+    action = self._call_kw(model, method, args, {})
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\web\controllers\main.py", line 954, in _call_kw
+    return call_kw(request.env[model], method, args, kwargs)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\api.py", line 759, in call_kw
+    return _call_kw_multi(method, model, args, kwargs)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\api.py", line 746, in _call_kw_multi
+    result = method(recs, *args, **kwargs)
+  File "<decorator-gen-61>", line 2, in button_immediate_install
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_module.py", line 74, in check_and_log
+    return method(self, *args, **kwargs)
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_module.py", line 445, in button_immediate_install
+    return self._button_immediate_function(type(self).button_install)
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_module.py", line 561, in _button_immediate_function
+    modules.registry.Registry.new(self._cr.dbname, update_module=True)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\modules\registry.py", line 86, in new
+    odoo.modules.load_modules(registry._db, force_demo, status, update_module)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\modules\loading.py", line 421, in load_modules
+    loaded_modules, update_module, models_to_check)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\modules\loading.py", line 313, in load_marked_modules
+    perform_checks=perform_checks, models_to_check=models_to_check
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\modules\loading.py", line 222, in load_module_graph
+    load_data(cr, idref, mode, kind='data', package=package, report=report)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\modules\loading.py", line 68, in load_data
+    tools.convert_file(cr, package.name, filename, idref, mode, noupdate, kind, report)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\tools\convert.py", line 802, in convert_file
+    convert_xml_import(cr, module, fp, idref, mode, noupdate, report)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\tools\convert.py", line 865, in convert_xml_import
+    obj.parse(doc.getroot(), mode=mode)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\tools\convert.py", line 755, in parse
+    self.parse(rec, mode)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\tools\convert.py", line 764, in parse
+    exc_info[2]
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\tools\pycompat.py", line 86, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\tools\convert.py", line 758, in parse
+    self._tags[rec.tag](rec, de, mode=mode)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\tools\convert.py", line 663, in _tag_record
+    record = model.with_context(rec_context)._load_records([data], self.mode == 'update')
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 3879, in _load_records
+    records = self._load_records_create([data['values'] for data in to_create])
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 3793, in _load_records_create
+    return self.create(values)
+  File "<decorator-gen-32>", line 2, in create
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\api.py", line 462, in _model_create_multi
+    return create(self, arg)
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_ui_view.py", line 428, in create
+    return super(View, self).create(vals_list)
+  File "<decorator-gen-3>", line 2, in create
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\api.py", line 462, in _model_create_multi
+    return create(self, arg)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 3610, in create
+    fields[0].determine_inverse(batch_recs)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\fields.py", line 1142, in determine_inverse
+    getattr(records, self.inverse)()
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_ui_view.py", line 275, in _inverse_arch
+    view.write(data)
+  File "c:\program files (x86)\odoo 12.0\server\odoo\addons\base\models\ir_ui_view.py", line 445, in write
+    res = super(View, self).write(self._compute_defaults(vals))
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 3335, in write
+    self._write(store_vals)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 3471, in _write
+    self._validate_fields(vals)
+  File "C:\Program Files (x86)\Odoo 12.0\server\odoo\models.py", line 1121, in _validate_fields
+    raise ValidationError("%s\n\n%s" % (_("Error while validating constraint"), tools.ustr(e)))
+odoo.tools.convert.ParseError: "Error while validating constraint
+
+Model not found: student_details
+
+Error context:
+View ` student.details.form.view `
+[view_id: 1326, xml_id: n/a, model: student_details, parent_id: n/a]
+None" while parsing file:/c:/program%20files%20(x86)/odoo%2012.0/server/odoo/addons/test_module/views/student_details_views.xml:4, near
+<record id="student_details_form_view" model="ir.ui.view">
+            <field name="name"> student.details.form.view </field>
+            <field name="model">student_details</field>
+            <field name="arch" type="xml">
+                <form string="Students">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="dob"/>
+                            <field name="age"/>
+                            <field name="standard"/>
+                            <field name="division"/>
+                            <field name="father"/>
+                            <field name="mother"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+
+        </record>

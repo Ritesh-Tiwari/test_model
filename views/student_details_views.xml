@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--suppress OdooXml -->
+<odoo>
+    <data>
+        <record id="student_details_form_view" model="ir_ui_view">
+            <field name ="name"> student.details.form.view </field>
+            <field name ="model">student.details</field>
+            <field name ="arch" type="xml">
+                <form string="Students">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="dob"/>
+                            <field name="age"/>
+                            <field name="standard"/>
+                            <field name="division"/>
+                            <field name="father"/>
+                            <field name="mother"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_details_tree_view" model="ir.ui.view">
+            <field name ="name"> student.details.tree.view </field>
+            <field name ="model">student.details</field>
+            <field name ="arch" type="xml">
+                <tree string="Student">
+                            <field name="name"/>
+                            <field name="dob"/>
+                            <field name="age"/>
+                            <field name="standard"/>
+                            <field name="division"/>
+                            <field name="father"/>
+                            <field name="mother"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="student_menu_action" model="ir.actions.act_window">
+            <field name="name">Student Details</field>
+            <field name="model">student.details</field>
+            <field name="view_type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id ="student_details_root_menu" name="Student Details" sequence="5" />
+        <menuitem id ="student_details_main_menu" name="Student" parent="student_details_root_menu" sequence="1" />
+        <menuitem id ="student_details_sub_menu" name="Student Details" parent="student_details_main_menu" action="student_menu_action" sequence="1" />
+    </data>
+</odoo>
