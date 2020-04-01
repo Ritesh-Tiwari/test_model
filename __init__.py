@@ -1,1 +1,1 @@
-from server.addons.test_module import models
+from test_module import models
