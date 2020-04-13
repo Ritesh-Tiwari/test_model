@@ -1,52 +1,133 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!--suppress OdooXml -->
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="student_details_form_view" model="ir_ui_view">
-            <field name ="name"> student.details.form.view </field>
-            <field name ="model">student.details</field>
-            <field name ="arch" type="xml">
-                <form string="Students">
+        <record id="student_details_form_view" model="ir.ui.view">
+            <field name="name">student.details.form.view</field>
+            <field name="model">student.details</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <header>
+                        <field name="state" Widget="statusbar"/>
+                        <button name="confirm_enrollment" string="Confirm Enrollment" class="oe_highlight" type="object"
+                                states="draft"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="DOB"/>
+                                <field name="age"/>
+                                <field name="subjects"/>
+                            </group>
+                            <group>
+                                <field name="father"/>
+                                <field name="mother"/>
+                                <field name="standard"/>
+                                <field name="division"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="marks_line">
+                                <tree editable="botton" delete="0" create="0">
+                                    <field name="name"/>
+                                    <field name="subjects"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <notebook>
+                            <page string="page one">
+                                <field name="name"/>
+                                <field name="DOB"/>
+                                <field name="age"/>
+                            </page>
+                            <page string="page two">
+                                <field name="father"/>
+                                <field name="mother"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="student_details_form_view2" model="ir.ui.view">
+            <field name="name">student.details.form.view</field>
+            <field name="model">student.details</field>
+            <field name="arch" type="xml">
+                <form string="Student">
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="dob"/>
+                            <field name="DOB"/>
                             <field name="age"/>
-                            <field name="standard"/>
-                            <field name="division"/>
-                            <field name="father"/>
-                            <field name="mother"/>
+
                         </group>
+                        <notebook>
+                            <page string="page one">
+                                <field name="name"/>
+                                <field name="DOB"/>
+                                <field name="age"/>
+                            </page>
+                            <page string="page two">
+                                <field name="father"/>
+                                <field name="mother"/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
         </record>
 
         <record id="student_details_tree_view" model="ir.ui.view">
-            <field name ="name"> student.details.tree.view </field>
-            <field name ="model">student.details</field>
-            <field name ="arch" type="xml">
+            <field name="name">student.details.tree.view</field>
+            <field name="model">student.details</field>
+            <field name="arch" type="xml">
                 <tree string="Student">
-                            <field name="name"/>
-                            <field name="dob"/>
-                            <field name="age"/>
-                            <field name="standard"/>
-                            <field name="division"/>
-                            <field name="father"/>
-                            <field name="mother"/>
+                    <field name="name"/>
+                    <field name="DOB"/>
+                    <field name="age"/>
+                    <field name="standard"/>
+                    <field name="division"/>
+                    <field name="father"/>
+                    <field name="mother"/>
+                </tree>
+            </field>
+        </record>
+        <record id="student_details_tree_view2" model="ir.ui.view">
+            <field name="name">student.details.tree.view</field>
+            <field name="model">student.details</field>
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="name"/>
+                    <field name="DOB"/>
+                    <field name="age"/>
                 </tree>
             </field>
         </record>
 
-        <record id="student_menu_action" model="ir.actions.act_window">
+        <record id="student_details_action_view" model="ir.actions.act_window">
             <field name="name">Student Details</field>
-            <field name="model">student.details</field>
-            <field name="view_type">ir.actions.act_window</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.details</field>
             <field name="view_mode">tree,form</field>
         </record>
+        <record id="student_details_action_view2" model="ir.actions.act_window">
+            <field name="name">Student Details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.details</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids"
+                   eval="[(5,0,0),
+                   (0,0 ,{'view_mode' : 'tree', 'view_id':ref('student_details_tree_view2')}),
+                   (0,0 ,{'view_mode' : 'form', 'view_id':ref('student_details_form_view2')})]"/>
 
-        <menuitem id ="student_details_root_menu" name="Student Details" sequence="5" />
-        <menuitem id ="student_details_main_menu" name="Student" parent="student_details_root_menu" sequence="1" />
-        <menuitem id ="student_details_sub_menu" name="Student Details" parent="student_details_main_menu" action="student_menu_action" sequence="1" />
+        </record>
+
+        <menuitem id="student_details_root_menu" name="Student Details" sequence="5"/>
+        <menuitem id="student_details_main_menu" name="Student" parent="student_details_root_menu" sequence="1"/>
+        <menuitem id="student_details_sub_menu" name="Student" parent="student_details_main_menu"
+                  action="student_details_action_view" sequence="1"/>
+        <menuitem id="student_details_sub_menu2" name="Student2" parent="student_details_main_menu"
+                  action="student_details_action_view2" sequence="2"/>
+
     </data>
 </odoo>
