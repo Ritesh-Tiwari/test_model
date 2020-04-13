@@ -1,13 +1,15 @@
+# -*- coding: utf-8 -*-
 {
-    'name': 'Test models',
-    'version': '12',
-    'summary ': 'This is a test module',
-    'description': '',
-    'website': 'https://www.testmodule.com',
+    'name': 'Test Module',
+    'version': '1.2',
     'category': '',
-    'depends': ['base'],
-    'author': '',
-    'data': ['views/student_details_views.xml'],
+    'description': """Test Module for Students.""",
+    'maintainer': '@DesiSwag',
+    'depends': ['base', 'sale', ],
+    'data': ['views/student_details_view.xml',
+             'security/ir.model.access..csv',
+             'security/security.xml'],
     'installable': True,
     'auto_install': False,
+
 }
